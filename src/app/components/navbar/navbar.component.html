@@ -1,0 +1,22 @@
+<div class="navbar navbar-expand bg-primary mb-4">
+  <div class="container">
+    <ul class="navbar-nav" >
+      <li class="navbar-brand" routerLink="/"><i class="fa fa-plus"></i></li>
+      <li class="nav-item">
+        <form class="form-inline">
+          <div class="form-group">
+            <input  type="search" class="form-control ml-1" placeholder="Search for patient">
+          </div>
+          <button class="btn btn-default ml-2" routerLink="add" (click)="removeActivePatients()">New Patient</button>
+        </form>
+      </li>
+      <li id="nameAndAge" class="nav-item">
+        <h3 id="patientName">Levhenii Kolosenko <span id="patientAge">{{date}} years old</span></h3>
+      </li>
+      <li class="navbar-item"><button class="btn btn-success ml-2">Save</button></li>
+      <li class="navbar-item"><button class="btn btn-light ml-2">Cancel</button></li>
+      <li class="navbar-item"><button class="btn btn-warning ml-2">Edit</button></li>
+      <li class="navbar-item"><button class="btn btn-danger ml-2">Delete</button></li>
+    </ul>
+  </div>
+</div>

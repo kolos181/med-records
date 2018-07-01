@@ -1,4 +1,4 @@
-#patientName {
+#patientName, #patientAge {
   color: white;
   margin-left: 55px;
 }
@@ -6,4 +6,8 @@
 #patientAge {
   margin-left: 80px;
   font-size: medium;
+}
+
+.btn-warning, .btn-light, .btn-danger {
+  float: right;
 }

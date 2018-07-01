@@ -11,6 +11,7 @@ import { PatientInfoComponent } from './components/patient-info/patient-info.com
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
+import { PatientEditComponent } from './components/patient-edit/patient-edit.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {RouterModule} from '@angular/router';
     PatientsComponent,
     CommentsComponent,
     PatientAddComponent,
-    PatientInfoComponent
+    PatientInfoComponent,
+    PatientEditComponent
   ],
   imports: [
     BrowserModule,

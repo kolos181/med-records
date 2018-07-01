@@ -1,12 +1,13 @@
 <div id="overflowControl">
-  <div *ngFor="let patient of patients" class="list-group" id="list-tab" role="tablist" [routerLink]="['/', patient.id]">
+  <div *ngFor="let patient of patients" class="list-group" id="list-tab" role="tablist"
+       [routerLink]="['/', patient.id]">
     <div class="container">
       <a class="list-group-item list-group-item-action" id="list-home-list" data-toggle="list" href="#list-home"
-         role="tab" aria-controls="home" (click)="toggleActive()">
+         role="tab" aria-controls="home" (click)="toggleActive();">
         <div class="row">
           <div class="col-lg-9">
             <p class="pt-2 pl-2">{{patient.name}}</p>
-            <p class="pl-2">{{patient.date | date: 'short'}}</p>
+            <p class="pl-2">{{patient.date | date: 'd MMM, y'}}</p>
           </div>
           <div class="col-lg-3">
             <h3 class="pt-2"><i class="fa fa-female sex-icon" *ngIf="patient.sex == 'female'"></i></h3>
@@ -17,3 +18,4 @@
     </div>
   </div>
 </div>
+

@@ -19,7 +19,8 @@
       <label for="birthDate" class="ml-2">Date of birth: </label>
       <input id="birthDate"
              type="date"
-             class="form-control ml-2"
+             [max]="today"
+             class="form-control ml-2 col-3"
              name="date"
              [(ngModel)]="patient.date"
              #patientDate="ngModel"

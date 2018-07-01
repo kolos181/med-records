@@ -10,8 +10,10 @@
                    class="form-control ml-1"
                    placeholder="Search for patient"
                    [(ngModel)]="patientSearchQuery"
+                   (click)="onEnteringSearchField()"
                    (blur)="onLeavingSearchField()"
-                   (keyup)="patientSearch()">
+                   (keyup)="patientSearch()"
+            >
           </div>
           <button class="btn btn-default ml-2" routerLink="/add">New Patient</button>
         </form>

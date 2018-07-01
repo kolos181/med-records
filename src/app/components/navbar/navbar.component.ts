@@ -31,6 +31,7 @@ export class NavbarComponent implements OnInit {
   patients: Patient[];
 
   patientSearchQuery: string;
+  userClickedOnSearch: boolean = false;
 
   constructor(private sharedService: SharedService,
               private location: Location,
@@ -75,9 +76,12 @@ export class NavbarComponent implements OnInit {
     }
   }
 
+  onEnteringSearchField() {
+    this.userClickedOnSearch = true;
+  }
+
   //update patient list to it's default state (meaning without search results)
   onLeavingSearchField() {
-    console.log('left field');
     this.patientSearchQuery = '';
     //displaying patients back again. Turning switcher to false
     this.sharedService.onNotFoundPatients(false);
@@ -85,13 +89,21 @@ export class NavbarComponent implements OnInit {
   }
 
   patientSearch() {
-    this.patientService.searchPatientByName(this.patientSearchQuery).subscribe(patientsSearchResult => {
-      if (patientsSearchResult.length == 0) {
-        this.sharedService.onNotFoundPatients(true);
-      } else {
-        this.sharedService.onNotFoundPatients(false);
-        this.sharedService.onUpdatedPatients(patientsSearchResult);
-      }
-    });
+    if (this.userClickedOnSearch && this.patientSearchQuery === '') {
+      this.sharedService.onNotFoundPatients(false);
+      this.sharedService.onUpdatedPatients(this.patients);
+    }
+
+
+    if (this.patientSearchQuery !== '') {
+      this.patientService.searchPatientByName(this.patientSearchQuery).subscribe(patientsSearchResult => {
+        if (patientsSearchResult.length == 0) {
+          this.sharedService.onNotFoundPatients(true);
+        } else {
+          this.sharedService.onNotFoundPatients(false);
+          this.sharedService.onUpdatedPatients(patientsSearchResult);
+        }
+      });
+    }
   }
 }

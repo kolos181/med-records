@@ -19,7 +19,13 @@
         </a>
       </div>
       <form id="commentForm" class="form-group form-inline">
-        <input class="form-control" type="text" id="commentInput" name="newComment" [(ngModel)]="newComment.comment">
+        <input id="commentInput"
+               class="form-control"
+               type="text"
+               name="newComment"
+               [(ngModel)]="newComment.comment"
+               maxlength="255"
+        >
         <button id="commentButton" type="submit" (click)="addComment();"><i class="fa fa-plus"></i></button>
       </form>
     </div>

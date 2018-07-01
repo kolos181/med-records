@@ -5,6 +5,7 @@ import {Router} from '@angular/router';
 import {PatientsComponent} from '../patients/patients.component';
 import {SharedService} from '../../services/shared.service';
 import $ from 'jquery';
+import * as moment from 'moment';
 
 @Component({
   providers: [PatientsComponent],
@@ -14,6 +15,8 @@ import $ from 'jquery';
 })
 
 export class PatientAddComponent implements OnInit {
+
+  today = moment(new Date()).format('YYYY-MM-DD');
 
   patient: Patient = {
     name: '',

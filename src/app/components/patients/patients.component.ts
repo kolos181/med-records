@@ -15,6 +15,7 @@ import {SharedService} from '../../services/shared.service';
 export class PatientsComponent implements OnInit {
 
   patients: Patient[];
+  noSuitableResults: boolean = false;
 
   constructor(private patientService: PatientService, private sharedService: SharedService) {
   }
@@ -27,6 +28,10 @@ export class PatientsComponent implements OnInit {
 
     this.sharedService.updatedPatients.subscribe(patients => {
       this.patients = patients;
+    });
+
+    this.sharedService.patientsSearchSuccess.subscribe(result => {
+      this.noSuitableResults = result;
     });
 
     return this.patientService.getPatients().subscribe(patients => {

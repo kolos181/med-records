@@ -4,7 +4,14 @@
       <li class="nav-item">
         <form class="form-inline">
           <div class="form-group">
-            <input type="search" class="form-control ml-1" placeholder="Search for patient">
+            <input id="patientSearch"
+                   type="search"
+                   name="patientSearch"
+                   class="form-control ml-1"
+                   placeholder="Search for patient"
+                   [(ngModel)]="patientSearchQuery"
+                   (blur)="onLeavingSearchField()"
+                   (keyup)="patientSearch()">
           </div>
           <button class="btn btn-default ml-2" routerLink="/add">New Patient</button>
         </form>

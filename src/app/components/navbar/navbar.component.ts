@@ -4,6 +4,7 @@ import {SharedService} from '../../services/shared.service';
 import {Patient} from '../../models/Patient';
 import {Location} from '@angular/common';
 import {PatientService} from '../../services/patient.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -27,6 +28,10 @@ export class NavbarComponent implements OnInit {
     updatedAt: null
   };
 
+  patients: Patient[];
+
+  patientSearchQuery: string;
+
   constructor(private sharedService: SharedService,
               private location: Location,
               private patientService: PatientService) {
@@ -34,6 +39,10 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    this.patientService.getPatients().subscribe(patients => {
+      this.patients = patients;
+    });
 
     this.sharedService.chosenPatient.subscribe(patient => {
       this.patient = patient;
@@ -64,5 +73,25 @@ export class NavbarComponent implements OnInit {
         });
       });
     }
+  }
+
+  //update patient list to it's default state (meaning without search results)
+  onLeavingSearchField() {
+    console.log('left field');
+    this.patientSearchQuery = '';
+    //displaying patients back again. Turning switcher to false
+    this.sharedService.onNotFoundPatients(false);
+    this.sharedService.onUpdatedPatients(this.patients);
+  }
+
+  patientSearch() {
+    this.patientService.searchPatientByName(this.patientSearchQuery).subscribe(patientsSearchResult => {
+      if (patientsSearchResult.length == 0) {
+        this.sharedService.onNotFoundPatients(true);
+      } else {
+        this.sharedService.onNotFoundPatients(false);
+        this.sharedService.onUpdatedPatients(patientsSearchResult);
+      }
+    });
   }
 }

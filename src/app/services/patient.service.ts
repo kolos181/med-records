@@ -42,4 +42,7 @@ export class PatientService {
     return this.httpClient.delete<Patient>(`${this.URL}/${id}`);
   }
 
+  searchPatientByName(name: string): Observable<Patient[]> {
+    return this.httpClient.get<Patient[]>(`${this.URL}/search/${name}`);
+  }
 }

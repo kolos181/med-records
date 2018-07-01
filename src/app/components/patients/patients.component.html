@@ -1,6 +1,6 @@
 <div id="overflowControl">
   <div *ngFor="let patient of patients" class="list-group" id="list-tab" role="tablist"
-       [routerLink]="['/', patient.id]">
+       [routerLink]="['/', patient.id]" [hidden]="noSuitableResults">
     <div class="container">
       <a class="list-group-item list-group-item-action" id="list-home-list" data-toggle="list" href="#list-home"
          role="tab" aria-controls="home" (click)="toggleActive();">
@@ -17,5 +17,6 @@
       </a>
     </div>
   </div>
+  <div [hidden]="!noSuitableResults"><h5 class="ml-3">Couldn't find any patients with this name</h5></div>
 </div>
 

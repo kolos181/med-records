@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { PatientsComponent } from './components/patients/patients.component';
-import { CommentsComponent } from './components/comments/comments.component';
 import { AppRoutingModule } from './app-routing.module';
 import { PatientAddComponent } from './components/patient-add/patient-add.component';
 import { PatientInfoComponent } from './components/patient-info/patient-info.component';
@@ -18,7 +17,6 @@ import { PatientEditComponent } from './components/patient-edit/patient-edit.com
     AppComponent,
     NavbarComponent,
     PatientsComponent,
-    CommentsComponent,
     PatientAddComponent,
     PatientInfoComponent,
     PatientEditComponent

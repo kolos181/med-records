@@ -14,7 +14,7 @@ export class PatientService {
     this.eventEmitterPatient.emit();
   }
 
-  private readonly URL = 'http://localhost:8080/api/patients';
+  private readonly URL = 'api/patients';
 
   constructor(private httpClient: HttpClient) {
   }
@@ -25,7 +25,6 @@ export class PatientService {
   }
 
   public getPatients(): Observable<Patient[]> {
-    console.log('inside service getPatients');
     return this.httpClient.get<Patient[]>(this.URL);
   }
 

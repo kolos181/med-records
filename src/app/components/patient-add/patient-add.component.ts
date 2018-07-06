@@ -29,12 +29,15 @@ export class PatientAddComponent implements OnInit {
     createdAt: null,
     updatedAt: null
   };
+  todaysDay: number;
+  patientsBirthday: number;
 
 
   constructor(private patientService: PatientService, private router: Router, private sharedService: SharedService) {
   }
 
   ngOnInit() {
+    this.todaysDay = new Date().valueOf();
     //remove unnecessary buttons from navbar and patient list selected
       $(() => {
         $('#patientName, #patientAge').prop('hidden', true);
@@ -49,9 +52,13 @@ export class PatientAddComponent implements OnInit {
     this.patientService.addPatient(this.patient).subscribe((patient) => {
         //sending new patient to patients array in PatientsComponent via interService
         this.sharedService.onNewPatient(patient);
-        this.router.navigateByUrl(patient.id.toString());
+        this.router.navigateByUrl(patient.id.toString(), {skipLocationChange: true});
 
       }
     );
+  }
+
+  updateBirthDateVar() {
+    this.patientsBirthday = new Date(this.patient.date).valueOf();
   }
 }

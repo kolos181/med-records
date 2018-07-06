@@ -15,7 +15,7 @@
                    (keyup)="patientSearch()"
             >
           </div>
-          <button class="btn btn-default ml-2" routerLink="/add">New Patient</button>
+          <button class="btn btn-default ml-2" routerLink="/add" skipLocationChange>New Patient</button>
         </form>
       </li>
       <li id="nameAndAge" class="nav-item">
@@ -25,10 +25,10 @@
     </ul>
     <ul class="navbar-nav ml-auto">
       <li class="navbar-item">
-        <button class="btn btn-light ml-2" (click)="goBack()">Cancel</button>
+        <button class="btn btn-light ml-2" routerLink="/" skipLocationChange>Cancel</button>
       </li>
       <li class="navbar-item">
-        <button class="btn btn-warning ml-2" [routerLink]="['/edit', patient.id]">Edit</button>
+        <button class="btn btn-warning ml-2" [routerLink]="['/edit', patient.id]" skipLocationChange>Edit</button>
       </li>
       <li class="navbar-item">
         <button class="btn btn-danger ml-2" (click)="deletePatient()">Delete</button>
